@@ -10,8 +10,10 @@ const prisma = new PrismaClient();
 router.post("/", validateReferral, async (req, res) => {
   console.log(req.body);
 
-  const { referrerName, referrerEmail, refereeName, refereeEmail, message } =
+  const { referrerName, referrerEmail, refereeName, refereeEmail, message, consent } =
     req.body;
+
+  if (!consent) return res.json({ error: "Please give your consent to share the details." })
 
   try {
     const referral = await prisma.referral.create({
