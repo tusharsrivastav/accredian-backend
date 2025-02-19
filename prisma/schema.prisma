@@ -14,11 +14,11 @@ datasource db {
 }
 
 model Referral {
-  id         String   @id @default(cuid())
-  name       String
-  email      String   @unique
-  phone      String   @unique
-  referralCode String @unique
-  referredBy String?
-  createdAt  DateTime @default(now())
+  id                 String   @id @default(cuid())
+  referrerName       String
+  referrerEmail      String   @unique
+  message            String? 
+  refereeName        String
+  refereeEmail       String   @unique
+  createdAt          DateTime @default(now())
 }
